@@ -1,0 +1,12 @@
+digraph classes {
+  nodesep=0.7; ranksep=0.9;
+  node [shape=record, fontname="DejaVu Sans", fontsize=16, style=filled, fillcolor="#e8f0f8", color="#3b5ea6"];
+  edge [fontname="DejaVu Sans", fontsize=13];
+  sc [label="{SelfCheck||+ main(String[]) void\l- runUnitChecks() boolean\l- runDataDriven() boolean\l- runInteractive() void\l}"];
+  ar [label="{ApprovalRouter|+ FINANCE_LIMIT : long = 500000\l+ EXPRESS_LIMIT : long = 50000\l|+ route(long, boolean, RiskLevel, boolean) ApprovalRoute\l+ addExpressEligibility(long, boolean, RiskLevel, boolean) boolean\l- checkArguments(long, RiskLevel) void\l- requiresSecurityReview(boolean) boolean\l- requiresDirectorReview(RiskLevel) boolean\l- requiresFinanceReview(long) boolean\l- requiresFastTrack(long, boolean) boolean\l}"];
+  route [label="{«enumeration»\nApprovalRoute||STANDARD\lFAST_TRACK\lFINANCE_REVIEW\lDIRECTOR_REVIEW\lSECURITY_REVIEW\lEXPRESS\l}", fillcolor="#fff2cc", color="#bf9000"];
+  risk [label="{«enumeration»\nRiskLevel||LOW\lMEDIUM\lHIGH\l}", fillcolor="#e2f0d9", color="#548235"];
+  sc -> ar [style=dashed, arrowhead=vee, label=" использует"];
+  ar -> route [style=dashed, arrowhead=vee, label=" returns"];
+  ar -> risk [style=dashed, arrowhead=vee, label=" uses"];
+}

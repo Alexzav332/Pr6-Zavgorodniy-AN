@@ -1,0 +1,26 @@
+# Расширенный sample.csv – контрольные значения (вариант 12: маршрут EXPRESS)
+# Формат: amount;urgent;risk;personal;expected
+amount;urgent;risk;personal;expected
+10000;true;LOW;false;EXPRESS
+60000;true;LOW;false;FAST_TRACK
+500000;false;LOW;false;FINANCE_REVIEW
+500001;false;LOW;false;FINANCE_REVIEW
+499999;true;LOW;false;FAST_TRACK
+10000;false;LOW;false;STANDARD
+10000;false;MEDIUM;false;STANDARD
+10000;true;HIGH;false;DIRECTOR_REVIEW
+10000;false;LOW;true;SECURITY_REVIEW
+10000;true;LOW;true;SECURITY_REVIEW
+10000;false;HIGH;true;SECURITY_REVIEW
+600000;true;LOW;false;FINANCE_REVIEW
+600000;false;HIGH;false;DIRECTOR_REVIEW
+10000;true;HIGH;true;SECURITY_REVIEW
+0;false;LOW;false;STANDARD
+10000000;false;LOW;false;FINANCE_REVIEW
+-1;true;LOW;false;ERROR
+10000;true;null;false;ERROR
+# строки варианта 12
+49999;true;LOW;false;EXPRESS
+50000;true;LOW;false;FAST_TRACK
+0;true;LOW;false;EXPRESS
+10000;true;MEDIUM;false;FAST_TRACK

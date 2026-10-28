@@ -1,0 +1,30 @@
+digraph activity {
+  rankdir=TB; nodesep=0.6; ranksep=0.55;
+  node [fontname="DejaVu Sans", fontsize=14, shape=box, style="rounded,filled", fillcolor="#e8f0f8", color="#3b5ea6"];
+  edge [fontname="DejaVu Sans", fontsize=13, color="#444444"];
+
+  start [label="Начало", shape=ellipse, fillcolor="#e2f0d9", color="#548235"];
+  n1 [label="Получить параметры заявки", shape=parallelogram, fillcolor="#e4e0ee", color="#7030a0"];
+  n2 [label="R1: есть персональные данные?", shape=diamond, style=filled, fillcolor="#fff2cc", color="#bf9000"];
+  n4 [label="R2: риск HIGH?", shape=diamond, style=filled, fillcolor="#fff2cc", color="#bf9000"];
+  n5 [label="R3: сумма ≥ FINANCE_LIMIT?", shape=diamond, style=filled, fillcolor="#fff2cc", color="#bf9000"];
+  nx [label="EXPRESS: срочная, сумма < 50 000\nи риск LOW?", shape=diamond, style=filled, fillcolor="#ffe0b3", color="#c55a11"];
+  n6 [label="R4: срочная и сумма < FINANCE_LIMIT?", shape=diamond, style=filled, fillcolor="#fff2cc", color="#bf9000"];
+  std [label="R5: маршрут STANDARD"];
+  n7 [label="Вернуть маршрут согласования"];
+  end [label="Завершение", shape=ellipse, fillcolor="#fce4d6", color="#c55a11"];
+
+  start -> n1 -> n2;
+  n2 -> n4 [label=" нет"];
+  n2 -> n7 [label=" да: SECURITY_REVIEW"];
+  n4 -> n5 [label=" нет"];
+  n4 -> n7 [label=" да: DIRECTOR_REVIEW"];
+  n5 -> nx [label=" нет"];
+  n5 -> n7 [label=" да: FINANCE_REVIEW"];
+  nx -> n6 [label=" нет"];
+  nx -> n7 [label=" да: EXPRESS"];
+  n6 -> std [label=" нет"];
+  n6 -> n7 [label=" да: FAST_TRACK"];
+  std -> n7;
+  n7 -> end;
+}
